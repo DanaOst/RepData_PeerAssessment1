@@ -17,6 +17,7 @@ steps <- daily_steps[!is.na(daily_steps[])]
 ## What is mean total number of steps taken per day?
 ```{r meandailysteps}
 png(filename="steps_histogram1.png")
+par(mfrow = c(1, 1))
 hist(steps)
 summary(steps)
 dev.off()
