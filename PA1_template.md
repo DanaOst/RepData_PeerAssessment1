@@ -30,9 +30,13 @@ steps <- daily_steps[!is.na(daily_steps[])]
 ## What is mean total number of steps taken per day?
 
 ```r
-png(filename="steps_histogram1.png")
 par(mfrow = c(1, 1))
 hist(steps)
+```
+
+![plot of chunk meandailysteps](figure/meandailysteps-1.png) 
+
+```r
 summary(steps)
 ```
 
@@ -42,10 +46,19 @@ summary(steps)
 ```
 
 ```r
+dev.copy(png, filename="steps_histogram1.png")
+```
+
+```
+## quartz_off_screen 
+##                 5
+```
+
+```r
 dev.off()
 ```
 
-![plot of chunk meandailysteps](figure/meandailysteps-1.png) 
+![plot of chunk meandailysteps](figure/meandailysteps-2.png) 
 
 ```
 ## RStudioGD 
@@ -63,7 +76,6 @@ colnames(average_steps)<- c("interval", "steps")
 average_steps$time <- as.POSIXct(average_steps$interval%/%100*3600+average_steps$interval%%100*60, "%H:%M:%S", origin = "2000-01-01 00:00:00")
 library(ggplot2)
 library(scales)
-png(file = "averagedailypattern1.png")
 m <- qplot(time, steps, data = average_steps, geom = c("line"), main="Average Steps per Day, 10/12-11/12")
 m+scale_x_datetime(breaks = date_breaks("120 min"), labels = date_format("%H:%M"))
 ```
@@ -76,11 +88,22 @@ m+scale_x_datetime(breaks = date_breaks("120 min"), labels = date_format("%H:%M"
 ## Warning in as.POSIXlt.POSIXct(x, tz): unknown timezone '%H:%M:%S'
 ```
 
+![plot of chunk mean_daily_activity](figure/mean_daily_activity-1.png) 
+
+```r
+dev.copy(png, file = "averagedailypattern1.png")
+```
+
+```
+## quartz_off_screen 
+##                 5
+```
+
 ```r
 dev.off()
 ```
 
-![plot of chunk mean_daily_activity](figure/mean_daily_activity-1.png) 
+![plot of chunk mean_daily_activity](figure/mean_daily_activity-2.png) 
 
 ```
 ## RStudioGD 
