@@ -31,6 +31,7 @@ steps <- daily_steps[!is.na(daily_steps[])]
 
 ```r
 png(filename="steps_histogram1.png")
+par(mfrow = c(1, 1))
 hist(steps)
 summary(steps)
 ```
@@ -161,6 +162,11 @@ hist(new_stps_mean[,2], xlab="mean number of steps per day", main="Mean Steps/Da
 new_stps_median<- aggregate(activ3$steps, list(activ3$date), median)
 colnames(new_stps_median)<- c("date", "average steps")
 hist(new_stps_median[,2], xlab="median steps per day", main="Median Steps/Day")
+```
+
+![plot of chunk imputing_missing_values](figure/imputing_missing_values-1.png) 
+
+```r
 summary(new_stps_mean)
 ```
 
@@ -203,7 +209,7 @@ dev.copy(png, file = "median_mean_w_nas_imputed1.png")
 dev.off()
 ```
 
-![plot of chunk imputing_missing_values](figure/imputing_missing_values-1.png) 
+![plot of chunk imputing_missing_values](figure/imputing_missing_values-2.png) 
 
 ```
 ## RStudioGD 
