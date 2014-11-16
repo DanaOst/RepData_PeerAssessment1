@@ -30,7 +30,7 @@ steps <- daily_steps[!is.na(daily_steps[])]
 ## What is mean total number of steps taken per day?
 
 ```r
-png(filename="steps_histogram.png")
+png(filename="steps_histogram2.png")
 hist(steps)
 summary(steps)
 ```
