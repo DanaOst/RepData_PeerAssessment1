@@ -30,7 +30,7 @@ steps <- daily_steps[!is.na(daily_steps[])]
 ## What is mean total number of steps taken per day?
 
 ```r
-png(filename="steps_histogram2.png")
+png(filename="steps_histogram1.png")
 hist(steps)
 summary(steps)
 ```
@@ -62,7 +62,7 @@ colnames(average_steps)<- c("interval", "steps")
 average_steps$time <- as.POSIXct(average_steps$interval%/%100*3600+average_steps$interval%%100*60, "%H:%M:%S", origin = "2000-01-01 00:00:00")
 library(ggplot2)
 library(scales)
-png(file = "averagedailypattern.png")
+png(file = "averagedailypattern1.png")
 m <- qplot(time, steps, data = average_steps, geom = c("line"), main="Average Steps per Day, 10/12-11/12")
 m+scale_x_datetime(breaks = date_breaks("120 min"), labels = date_format("%H:%M"))
 ```
@@ -191,7 +191,7 @@ summary(new_stps_median)
 ```
 
 ```r
-dev.copy(png, file = "median_mean_w_nas_imputed.png")
+dev.copy(png, file = "median_mean_w_nas_imputed1.png")
 ```
 
 ```
@@ -250,7 +250,6 @@ wk_stps$day <- "weekday"
 
 #combine weekend and weekdays and make graphs for each
 all_steps <- rbind(wknd_stps, wk_stps)
-png(filename="wknd_v_wkdays.png")
 week <- qplot(time, steps, data = all_steps, geom = c("line"), main="Average Weekday Steps per Day, Oct/12-Nov/12", facets = day~.)
 week+scale_x_datetime(breaks = date_breaks("120 min"), labels = date_format("%H:%M"))
 ```
@@ -267,11 +266,22 @@ week+scale_x_datetime(breaks = date_breaks("120 min"), labels = date_format("%H:
 ## Warning in as.POSIXlt.POSIXct(x, tz): unknown timezone '%H:%M:%S'
 ```
 
+![plot of chunk wkdys_v_wknds](figure/wkdys_v_wknds-1.png) 
+
+```r
+dev.copy(png, file = "wknd_v_wkdays1.png")
+```
+
+```
+## quartz_off_screen 
+##                 5
+```
+
 ```r
 dev.off()
 ```
 
-![plot of chunk wkdys_v_wknds](figure/wkdys_v_wknds-1.png) 
+![plot of chunk wkdys_v_wknds](figure/wkdys_v_wknds-2.png) 
 
 ```
 ## RStudioGD 
