@@ -15,7 +15,7 @@ steps <- daily_steps[!is.na(daily_steps[])]
 ```
 
 ## What is mean total number of steps taken per day?
-```{r}
+```{r meandailysteps}
 hist(steps)
 summary(steps)
 dev.copy(png, file = "steps_histogram.png")
@@ -24,7 +24,7 @@ dev.off()
 
 ## What is the average daily activity pattern?
 
-```{r}
+```{r mean_daily_activity}
 activ2 <-activ[!is.na(activ[,1]),]
 average_steps <- aggregate(activ2$steps, list(activ2$interval), mean)
 colnames(average_steps)<- c("interval", "steps")
@@ -44,7 +44,7 @@ average_steps[average_steps$steps==206.170,]
 ```
 
 ## Imputing missing values
-```{r}
+```{r imputing_missing_values}
 na_count <- activ[is.na(activ[,1]),]
 #count number of n/a rows
 nrow(na_count)
@@ -70,7 +70,7 @@ dev.off()
 ```
 
 ## Are there differences in activity patterns between weekdays and weekends?
-```{r}
+```{r wkdys_v_wknds}
 activ3$date <- as.Date(activ3$date)
 #Let's make sure the date is now a date (not a factor)
 str(activ3)
