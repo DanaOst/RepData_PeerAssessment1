@@ -11,18 +11,6 @@ output:
 
 ```r
 activ <- read.csv("activity.csv")
-```
-
-```
-## Warning in file(file, "rt"): cannot open file 'activity.csv': No such file
-## or directory
-```
-
-```
-## Error in file(file, "rt"): cannot open the connection
-```
-
-```r
 daily_steps <- tapply(activ$steps, activ$date, sum)
 steps <- daily_steps[!is.na(daily_steps[])]
 ```
@@ -31,13 +19,13 @@ steps <- daily_steps[!is.na(daily_steps[])]
 
 ```r
 par(mfrow = c(1, 1))
-hist(steps)
+hist(steps, col="red")
 ```
 
-![plot of chunk meandailysteps](figure/meandailysteps-1.png) 
+![plot of chunk meandailysteps](./figure/meandailysteps-1.png) 
 
 ```r
-dev.copy(png, filename="steps_histogram1.png")
+dev.copy(png, filename="./figure/steps_histogram1.png")
 ```
 
 ```
@@ -49,7 +37,7 @@ dev.copy(png, filename="steps_histogram1.png")
 dev.off()
 ```
 
-![plot of chunk meandailysteps](figure/meandailysteps-2.png) 
+![plot of chunk meandailysteps](./figure/meandailysteps-2.png) 
 
 ```
 ## RStudioGD 
@@ -88,7 +76,7 @@ m+scale_x_datetime(breaks = date_breaks("120 min"), labels = date_format("%H:%M"
 ## Warning in as.POSIXlt.POSIXct(x, tz): unknown timezone '%H:%M:%S'
 ```
 
-![plot of chunk mean_daily_activity](figure/mean_daily_activity-1.png) 
+![plot of chunk mean_daily_activity](./figure/mean_daily_activity-1.png) 
 
 ```r
 dev.copy(png, file = "averagedailypattern1.png")
@@ -103,7 +91,7 @@ dev.copy(png, file = "averagedailypattern1.png")
 dev.off()
 ```
 
-![plot of chunk mean_daily_activity](figure/mean_daily_activity-2.png) 
+![plot of chunk mean_daily_activity](./figure/mean_daily_activity-2.png) 
 
 ```
 ## RStudioGD 
@@ -185,12 +173,7 @@ hist(new_stps_mean[,2], xlab="mean number of steps per day", main="Mean Steps/Da
 new_stps_median<- aggregate(activ3$steps, list(activ3$date), median)
 colnames(new_stps_median)<- c("date", "average steps")
 hist(new_stps_median[,2], xlab="median steps per day", main="Median Steps/Day")
-```
-
-![plot of chunk imputing_missing_values](figure/imputing_missing_values-1.png) 
-
-```r
-dev.copy(png, file = "median_mean_w_nas_imputed1.png")
+dev.copy(png, file = "./figure/median_mean_w_nas_imputed1.png")
 ```
 
 ```
@@ -202,7 +185,7 @@ dev.copy(png, file = "median_mean_w_nas_imputed1.png")
 dev.off()
 ```
 
-![plot of chunk imputing_missing_values](figure/imputing_missing_values-2.png) 
+![plot of chunk imputing_missing_values](./figure/imputing_missing_values-1.png) 
 
 ```
 ## RStudioGD 
@@ -295,7 +278,7 @@ week+scale_x_datetime(breaks = date_breaks("120 min"), labels = date_format("%H:
 ## Warning in as.POSIXlt.POSIXct(x, tz): unknown timezone '%H:%M:%S'
 ```
 
-![plot of chunk wkdys_v_wknds](figure/wkdys_v_wknds-1.png) 
+![plot of chunk wkdys_v_wknds](./figure/wkdys_v_wknds-1.png) 
 
 ```r
 dev.copy(png, file = "wknd_v_wkdays1.png")
@@ -310,7 +293,7 @@ dev.copy(png, file = "wknd_v_wkdays1.png")
 dev.off()
 ```
 
-![plot of chunk wkdys_v_wknds](figure/wkdys_v_wknds-2.png) 
+![plot of chunk wkdys_v_wknds](./figure/wkdys_v_wknds-2.png) 
 
 ```
 ## RStudioGD 
