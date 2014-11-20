@@ -37,15 +37,6 @@ hist(steps)
 ![plot of chunk meandailysteps](figure/meandailysteps-1.png) 
 
 ```r
-summary(steps)
-```
-
-```
-##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##      41    8841   10760   10770   13290   21190
-```
-
-```r
 dev.copy(png, filename="steps_histogram1.png")
 ```
 
@@ -63,6 +54,15 @@ dev.off()
 ```
 ## RStudioGD 
 ##         2
+```
+
+```r
+summary(steps)
+```
+
+```
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##      41    8841   10760   10770   13290   21190
 ```
 
 ## What is the average daily activity pattern?
@@ -190,6 +190,26 @@ hist(new_stps_median[,2], xlab="median steps per day", main="Median Steps/Day")
 ![plot of chunk imputing_missing_values](figure/imputing_missing_values-1.png) 
 
 ```r
+dev.copy(png, file = "median_mean_w_nas_imputed1.png")
+```
+
+```
+## quartz_off_screen 
+##                 5
+```
+
+```r
+dev.off()
+```
+
+![plot of chunk imputing_missing_values](figure/imputing_missing_values-2.png) 
+
+```
+## RStudioGD 
+##         2
+```
+
+```r
 summary(new_stps_mean)
 ```
 
@@ -217,26 +237,6 @@ summary(new_stps_median)
 ##  2012-10-05: 1   3rd Qu.: 0.000  
 ##  2012-10-06: 1   Max.   :37.380  
 ##  (Other)   :55
-```
-
-```r
-dev.copy(png, file = "median_mean_w_nas_imputed1.png")
-```
-
-```
-## quartz_off_screen 
-##                 5
-```
-
-```r
-dev.off()
-```
-
-![plot of chunk imputing_missing_values](figure/imputing_missing_values-2.png) 
-
-```
-## RStudioGD 
-##         2
 ```
 
 ```r
