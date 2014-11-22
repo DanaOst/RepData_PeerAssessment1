@@ -6,7 +6,10 @@ output:
    html_document:
    keep_md: true
 ---
-
+##Intro Code
+```{r global_options, include=FALSE}
+opts_chunk$set(fig.path='figure/',warning=FALSE, message=FALSE, fig.keep='last')
+```
 ## Loading and preprocessing the data
 ```{r}
 activ <- read.csv("activity.csv")
@@ -18,8 +21,8 @@ steps <- daily_steps[!is.na(daily_steps[])]
 ```{r meandailysteps}
 par(mfrow = c(1, 1))
 hist(steps, col="red")
-dev.copy(png, filename="./figure/steps_histogram1.png")
-dev.off()
+#dev.copy(png, filename="./figure/steps_histogram1.png")
+#dev.off()
 summary(steps)
 ```
 
@@ -35,8 +38,8 @@ library(ggplot2)
 library(scales)
 m <- qplot(time, steps, data = average_steps, geom = c("line"), main="Average Steps per Day, 10/12-11/12")
 m+scale_x_datetime(breaks = date_breaks("120 min"), labels = date_format("%H:%M"))
-dev.copy(png, file = "averagedailypattern1.png")
-dev.off()
+#dev.copy(png, file = "./figure/averagedailypattern1.png")
+#dev.off()
 average_steps$steps <- round(average_steps$steps, 3)
 #Look at summary to find what the max steps are
 summary(average_steps)
@@ -63,8 +66,8 @@ hist(new_stps_mean[,2], xlab="mean number of steps per day", main="Mean Steps/Da
 new_stps_median<- aggregate(activ3$steps, list(activ3$date), median)
 colnames(new_stps_median)<- c("date", "average steps")
 hist(new_stps_median[,2], xlab="median steps per day", main="Median Steps/Day")
-dev.copy(png, file = "./figure/median_mean_w_nas_imputed1.png")
-dev.off()
+#dev.copy(png, file = "./figure/median_mean_w_nas_imputed1.png")
+#dev.off()
 summary(new_stps_mean)
 summary(new_stps_median)
 #On most days, the most common # of steps per 5 minute interval is 0, so the median is often 0.
@@ -97,6 +100,6 @@ wk_stps$day <- "weekday"
 all_steps <- rbind(wknd_stps, wk_stps)
 week <- qplot(time, steps, data = all_steps, geom = c("line"), main="Average Weekday Steps per Day, Oct/12-Nov/12", facets = day~.)
 week+scale_x_datetime(breaks = date_breaks("120 min"), labels = date_format("%H:%M"))
-dev.copy(png, file = "wknd_v_wkdays1.png")
-dev.off()
+#dev.copy(png, file = "./figure/wknd_v_wkdays1.png")
+#dev.off()
 ```

@@ -6,6 +6,7 @@ output:
    html_document:
    keep_md: true
 ---
+##Intro Code
 
 ## Loading and preprocessing the data
 
@@ -22,29 +23,11 @@ par(mfrow = c(1, 1))
 hist(steps, col="red")
 ```
 
-![plot of chunk meandailysteps](./figure/meandailysteps-1.png) 
+![plot of chunk meandailysteps](figure/meandailysteps-1.png) 
 
 ```r
-dev.copy(png, filename="./figure/steps_histogram1.png")
-```
-
-```
-## quartz_off_screen 
-##                 5
-```
-
-```r
-dev.off()
-```
-
-![plot of chunk meandailysteps](./figure/meandailysteps-2.png) 
-
-```
-## RStudioGD 
-##         2
-```
-
-```r
+#dev.copy(png, filename="./figure/steps_histogram1.png")
+#dev.off()
 summary(steps)
 ```
 
@@ -68,44 +51,14 @@ m <- qplot(time, steps, data = average_steps, geom = c("line"), main="Average St
 m+scale_x_datetime(breaks = date_breaks("120 min"), labels = date_format("%H:%M"))
 ```
 
-```
-## Warning in as.POSIXlt.POSIXct(x): unknown timezone '%H:%M:%S'
-```
-
-```
-## Warning in as.POSIXlt.POSIXct(x, tz): unknown timezone '%H:%M:%S'
-```
-
-![plot of chunk mean_daily_activity](./figure/mean_daily_activity-1.png) 
+![plot of chunk mean_daily_activity](figure/mean_daily_activity-1.png) 
 
 ```r
-dev.copy(png, file = "averagedailypattern1.png")
-```
-
-```
-## quartz_off_screen 
-##                 5
-```
-
-```r
-dev.off()
-```
-
-![plot of chunk mean_daily_activity](./figure/mean_daily_activity-2.png) 
-
-```
-## RStudioGD 
-##         2
-```
-
-```r
+#dev.copy(png, file = "./figure/averagedailypattern1.png")
+#dev.off()
 average_steps$steps <- round(average_steps$steps, 3)
 #Look at summary to find what the max steps are
 summary(average_steps)
-```
-
-```
-## Warning in as.POSIXlt.POSIXct(x, tz): unknown timezone '%H:%M:%S'
 ```
 
 ```
@@ -121,10 +74,6 @@ summary(average_steps)
 ```r
 #Find what time of day the max steps (206.170) is
 average_steps[average_steps$steps==206.170,]
-```
-
-```
-## Warning in as.POSIXlt.POSIXct(x, tz): unknown timezone '%H:%M:%S'
 ```
 
 ```
@@ -173,26 +122,13 @@ hist(new_stps_mean[,2], xlab="mean number of steps per day", main="Mean Steps/Da
 new_stps_median<- aggregate(activ3$steps, list(activ3$date), median)
 colnames(new_stps_median)<- c("date", "average steps")
 hist(new_stps_median[,2], xlab="median steps per day", main="Median Steps/Day")
-dev.copy(png, file = "./figure/median_mean_w_nas_imputed1.png")
 ```
 
-```
-## quartz_off_screen 
-##                 5
-```
+![plot of chunk imputing_missing_values](figure/imputing_missing_values-1.png) 
 
 ```r
-dev.off()
-```
-
-![plot of chunk imputing_missing_values](./figure/imputing_missing_values-1.png) 
-
-```
-## RStudioGD 
-##         2
-```
-
-```r
+#dev.copy(png, file = "./figure/median_mean_w_nas_imputed1.png")
+#dev.off()
 summary(new_stps_mean)
 ```
 
@@ -266,36 +202,9 @@ week <- qplot(time, steps, data = all_steps, geom = c("line"), main="Average Wee
 week+scale_x_datetime(breaks = date_breaks("120 min"), labels = date_format("%H:%M"))
 ```
 
-```
-## Warning in as.POSIXlt.POSIXct(x): unknown timezone '%H:%M:%S'
-```
-
-```
-## Warning in as.POSIXlt.POSIXct(x, tz): unknown timezone '%H:%M:%S'
-```
-
-```
-## Warning in as.POSIXlt.POSIXct(x, tz): unknown timezone '%H:%M:%S'
-```
-
-![plot of chunk wkdys_v_wknds](./figure/wkdys_v_wknds-1.png) 
+![plot of chunk wkdys_v_wknds](figure/wkdys_v_wknds-1.png) 
 
 ```r
-dev.copy(png, file = "wknd_v_wkdays1.png")
-```
-
-```
-## quartz_off_screen 
-##                 5
-```
-
-```r
-dev.off()
-```
-
-![plot of chunk wkdys_v_wknds](./figure/wkdys_v_wknds-2.png) 
-
-```
-## RStudioGD 
-##         2
+#dev.copy(png, file = "./figure/wknd_v_wkdays1.png")
+#dev.off()
 ```
